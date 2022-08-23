@@ -40,31 +40,34 @@ return packer.startup({
 		-- and treesitter set event to VimEnter or not set is work!
 		--
 		-- LSP
-		use {
-			"neovim/nvim-lspconfig",
-			opt = true,
-			-- this line will let the first open file with no highlight
-			event = "BufEnter",
-			wants = { "nvim-lsp-installer" },
-			config = function()
-				require("config.lsp").setup()
-			end,
-			requires = {
-				"williamboman/nvim-lsp-installer",
-			},
-		}
+		--use {
+		--"neovim/nvim-lspconfig",
+		--opt = true,
+		---- this line will let the first open file with no highlight
+		--event = "BufEnter",
+		--wants = { "nvim-lsp-installer" },
+		--config = function()
+		--require("config.lsp").setup()
+		--end,
+		--requires = {
+		--"williamboman/nvim-lsp-installer",
+		--},
+		--}
 
-		use {
-			'nvim-treesitter/nvim-treesitter',
-			event = "VimEnter",
-			run = function()
-				require('nvimtreesitter.install').update({ with_sync = true })
-			end,
-			config = function()
-				require("config.nvimtreesitter").setup()
-			end,
-		}
-
+		-- use {
+		-- 'nvim-treesitter/nvim-treesitter',
+		-- event = "VimEnter",
+		-- run = function()
+		-- require('nvimtreesitter.install').update({ with_sync = true })
+		-- end,
+		-- config = function()
+		-- require("config.nvimtreesitter").setup()
+		-- end,
+		-- }
+		--
+		use 'nvim-treesitter/nvim-treesitter'
+		use "neovim/nvim-lspconfig"
+		use "williamboman/nvim-lsp-installer"
 
 		use 'wbthomason/packer.nvim'
 		use 'shaunsingh/nord.nvim'
