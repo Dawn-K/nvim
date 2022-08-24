@@ -70,7 +70,7 @@ return packer.startup({
 		use "williamboman/nvim-lsp-installer"
 
 		use 'wbthomason/packer.nvim'
-		use 'shaunsingh/nord.nvim'
+	use 'shaunsingh/nord.nvim'
 		use {
 			'nvim-lualine/lualine.nvim',
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -135,5 +135,8 @@ return packer.startup({
 				require("telescope").load_extension('projects')
 			end
 		}
+
+		use 'voldikss/vim-floaterm'
+
 	end,
 })
