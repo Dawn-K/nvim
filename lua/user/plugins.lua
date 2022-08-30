@@ -1,3 +1,22 @@
+local fn = vim.fn
+
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	vim.notify "Packer not found, installing it ..."
+	IS_PACKER_NEWLY_INSTALLED = true
+	fn.system {
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	}
+	vim.cmd [[packadd packer.nvim]]
+	vim.notify "Installing packer success"
+end
+
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	vim.notify("packer not found")
@@ -12,65 +31,17 @@ packer.init {
 		end
 	}
 }
--- require 'nvim-treesitter.configs'.setup {
--- -- A list of parser names, or "all"
--- ensure_installed = { "c", "cpp", "go", "lua", "markdown", "rust" },
---
--- -- Automatically install missing parsers when entering buffer
--- auto_install = true,
---
--- -- List of parsers to ignore installing (for "all")
--- ignore_install = {},
---
--- highlight = {
--- -- `false` will disable the whole extension
--- enable = true,
---
--- -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
--- -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
--- -- Using this option may slow down your editor, and you may see some duplicate highlights.
--- -- Instead of true it can also be a list of languages
--- additional_vim_regex_highlighting = false,
--- },
--- }
-
 return packer.startup({
 	function()
 		-- Warning! nvim-lspconfig set event to "BufEnter",
 		-- and treesitter set event to VimEnter or not set is work!
-		--
-		-- LSP
-		--use {
-		--"neovim/nvim-lspconfig",
-		--opt = true,
-		---- this line will let the first open file with no highlight
-		--event = "BufEnter",
-		--wants = { "nvim-lsp-installer" },
-		--config = function()
-		--require("config.lsp").setup()
-		--end,
-		--requires = {
-		--"williamboman/nvim-lsp-installer",
-		--},
-		--}
-
-		-- use {
-		-- 'nvim-treesitter/nvim-treesitter',
-		-- event = "VimEnter",
-		-- run = function()
-		-- require('nvimtreesitter.install').update({ with_sync = true })
-		-- end,
-		-- config = function()
-		-- require("config.nvimtreesitter").setup()
-		-- end,
-		-- }
 		--
 		use 'nvim-treesitter/nvim-treesitter'
 		use "neovim/nvim-lspconfig"
 		use "williamboman/nvim-lsp-installer"
 
 		use 'wbthomason/packer.nvim'
-	use 'shaunsingh/nord.nvim'
+		use 'shaunsingh/nord.nvim'
 		use {
 			'nvim-lualine/lualine.nvim',
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
@@ -138,5 +109,17 @@ return packer.startup({
 
 		use 'voldikss/vim-floaterm'
 
+		-- Complete
+		use "hrsh7th/nvim-cmp"
+		use "hrsh7th/cmp-nvim-lsp"
+		use "hrsh7th/cmp-nvim-lsp-document-symbol"
+		use "L3MON4D3/LuaSnip"
+
+
+		-- Automatically sync plugins after cloning packer.nvim
+		-- Pust this at the end after all plugins.
+		if IS_PACKER_NEWLY_INSTALLED then
+			require("packer").sync()
+		end
 	end,
 })

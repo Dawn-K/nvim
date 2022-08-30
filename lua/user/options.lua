@@ -25,3 +25,5 @@ opt.shiftwidth = 4
 -- move
 o.scrolloff = 5
 o.sidescrolloff = 5
+
+opt.termguicolors = true
