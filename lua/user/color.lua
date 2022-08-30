@@ -1,11 +1,22 @@
 local M = {}
 function M.setup()
+
+	local colorscheme = "nord"
+	vim.g.nord_italic = false -- must config before apply colorscheme
+
+	local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+	if not status_ok then
+		vim.notify("colorscheme " .. colorscheme .. " not found")
+		return
+	end
+
+
 	-- background
-	vim.api.nvim_set_hl(0, "NonText", { bg = "#2E3440"})
+	vim.api.nvim_set_hl(0, "NonText", { bg = "#2E3440" })
 
 	-- set select
-	vim.api.nvim_set_hl(0, "Pmenu", { bg = "#3B4252"})
-	vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#434C5E"})
+	vim.api.nvim_set_hl(0, "Pmenu", { bg = "#3B4252" })
+	vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#434C5E" })
 
 	-- set cmp
 	--  gray

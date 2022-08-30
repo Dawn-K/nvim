@@ -5,12 +5,8 @@ require "user.plugins"
 -- TODO
 -- 1. autopair
 -- 2. codeaction config such as only one bulb and shortcut
--- 3. comment 
--- 4. model the treesitter and lsp-config 
-
--- theme
-vim.g.nord_italic = false
-vim.cmd [[colorscheme nord]]
+-- 3. comment
+-- 4. model the treesitter and lsp-config
 
 require("user.color").setup()
 
@@ -48,6 +44,21 @@ local function default_attach(client, bufnr)
 		update_in_insert = true,
 	})
 end
+
+-- Warning!  lsp-installer must be configured before lsp-config
+-- https://github.com/williamboman/nvim-lsp-installer/discussions/509
+local lsp_installer = require("nvim-lsp-installer")
+lsp_installer.on_server_ready(function(server)
+	local opts = {
+		on_attach = function(client, bufnr)
+			default_attach(client, bufnr)
+		end,
+		flags = {
+			debounce_text_changes = 150,
+		},
+	}
+	server:setup(opts)
+end)
 
 -- Complete
 local cmp = require("cmp")
@@ -186,17 +197,3 @@ end
 for server, config in pairs(servers) do
 	setup_server(server, config)
 end
-
-
-local lsp_installer = require("nvim-lsp-installer")
-lsp_installer.on_server_ready(function(server)
-	local opts = {
-		on_attach = function(client, bufnr)
-			default_attach(client, bufnr)
-		end,
-		flags = {
-			debounce_text_changes = 150,
-		},
-	}
-	server:setup(opts)
-end)
