@@ -37,8 +37,10 @@ return packer.startup({
 		-- and treesitter set event to VimEnter or not set is work!
 		--
 		use 'nvim-treesitter/nvim-treesitter'
-		use "neovim/nvim-lspconfig"
+
+		-- Warning vim-lsp-installer must ahead of lspconfig
 		use "williamboman/nvim-lsp-installer"
+		use "neovim/nvim-lspconfig"
 
 		use 'wbthomason/packer.nvim'
 		use 'shaunsingh/nord.nvim'
