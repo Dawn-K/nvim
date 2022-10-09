@@ -14,7 +14,6 @@ M.setup = function()
 	end
 
 	local config = {
-		-- disable virtual text
 		virtual_text = true,
 		-- show signs
 		signs = {
@@ -32,6 +31,14 @@ M.setup = function()
 			prefix = "",
 		},
 	}
+
+	vim.opt.signcolumn = "yes"
+
+	-- show diagnostic in insert mode
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+		vim.lsp.diagnostic.on_publish_diagnostics, {
+		update_in_insert = true,
+	})
 
 	vim.diagnostic.config(config)
 
