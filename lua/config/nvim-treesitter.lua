@@ -12,6 +12,11 @@ function M.setup()
 		},
 		indent = {
 			enable = true, -- default is disabled anyways
+		},
+		--[[ add comment support for more languages ]]
+		context_commentstring = {
+			enable = true,
+			enable_autocmd = false,
 		}
 	}
 end

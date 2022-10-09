@@ -36,6 +36,8 @@ return packer.startup({
 		-- Warning! nvim-lspconfig set event to "BufEnter",
 		-- and treesitter set event to VimEnter or not set is work!
 		use 'nvim-treesitter/nvim-treesitter'
+		use 'numToStr/Comment.nvim'
+		use 'JoosepAlviste/nvim-ts-context-commentstring'
 
 		use "williamboman/nvim-lsp-installer"
 		use "neovim/nvim-lspconfig"
