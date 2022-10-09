@@ -51,13 +51,16 @@ function M.setup()
 	local function setup_server(server, config)
 		-- disable lsp
 		if not config then
+			vim.notify("setup_server not config")
 			return
 		end
 
 		-- set default value
 		config = vim.tbl_deep_extend("keep", config, default_config)
 
-		lspconfig[server].setup(config)
+		vim.notify("setup server")
+		-- TODO
+		lspconfig[server].setup(default_config)
 	end
 
 	for server, config in pairs(servers) do

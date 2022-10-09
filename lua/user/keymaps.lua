@@ -36,7 +36,7 @@ map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", default_opts)
 
 -- Refactor
 map("n", "<leader>re", "<cmd>Lspsaga rename<CR>", default_opts)
-map("n", "<leader>s", "<cmd>lua vim.lsp.buf.formatting()<CR>", default_opts)
+map("n", "<leader>s", "<cmd>lua vim.lsp.buf.format{ async=true }<CR>", default_opts)
 
 -- Move
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", default_opts)

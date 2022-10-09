@@ -35,7 +35,6 @@ return packer.startup({
 	function()
 		-- Warning! nvim-lspconfig set event to "BufEnter",
 		-- and treesitter set event to VimEnter or not set is work!
-		
 		use 'nvim-treesitter/nvim-treesitter'
 
 		use "williamboman/nvim-lsp-installer"
