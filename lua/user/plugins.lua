@@ -39,6 +39,8 @@ return packer.startup({
 		use 'numToStr/Comment.nvim'
 		use 'JoosepAlviste/nvim-ts-context-commentstring'
 
+		use 'windwp/nvim-autopairs'
+
 		use "williamboman/nvim-lsp-installer"
 		use "neovim/nvim-lspconfig"
 

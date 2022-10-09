@@ -18,6 +18,10 @@ function M.setup()
 			enable = true,
 			enable_autocmd = false,
 		}
+		,
+		autopairs = {
+			enable = true
+		}
 	}
 end
 
