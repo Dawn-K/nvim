@@ -14,7 +14,8 @@ function M.setup()
 			adaptive_size = true,
 		},
 		filters = {
-			custom = { ".git" },
+			-- TODO bug: it will hide file has prefix of git
+		--	custom = { ".git" },
 		},
 	}
 end

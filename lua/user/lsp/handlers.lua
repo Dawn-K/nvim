@@ -13,11 +13,45 @@ M.setup = function()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 
+	-- Create a custom namespace. This will aggregate signs from all other
+	-- namespaces and only show the one with the highest severity on a
+	-- given line
+	local ns = vim.api.nvim_create_namespace("my_namespace")
+
+	-- Get a reference to the original signs handler
+	local orig_signs_handler = vim.diagnostic.handlers.signs
+
 	local config = {
 		virtual_text = true,
 		-- show signs
 		signs = {
 			active = signs,
+			-- 没搞懂
+			-- https://neovim.io/doc/user/diagnostic.html#diagnostic-handlers-example
+			show = function(_, bufnr, _, opts)
+				-- Get all diagnostics from the whole buffer rather than just the
+				-- diagnostics passed to the handler
+				local diagnostics = vim.diagnostic.get(bufnr)
+				-- seems no use
+				vim.notify("debug show function")
+
+				-- Find the "worst" diagnostic per line
+				local max_severity_per_line = {}
+				for _, d in pairs(diagnostics) do
+					local m = max_severity_per_line[d.lnum]
+					if not m or d.severity < m.severity then
+						max_severity_per_line[d.lnum] = d
+					end
+				end
+
+				-- Pass the filtered diagnostics (with our custom namespace) to
+				-- the original handler
+				local filtered_diagnostics = vim.tbl_values(max_severity_per_line)
+				orig_signs_handler.show(ns, bufnr, filtered_diagnostics, opts)
+			end,
+			hide = function(_, bufnr)
+				orig_signs_handler.hide(ns, bufnr)
+			end,
 		},
 		update_in_insert = true,
 		underline = true,
@@ -32,7 +66,8 @@ M.setup = function()
 		},
 	}
 
-	vim.opt.signcolumn = "yes"
+	vim.opt.signcolumn = "yes:2"
+
 
 	-- show diagnostic in insert mode
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

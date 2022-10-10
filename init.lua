@@ -19,3 +19,4 @@ require("user.lsp")
 
 require("user.comment").setup()
 require("user.autopairs").setup()
+require("user.gitsigns")

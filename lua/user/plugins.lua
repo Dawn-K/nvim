@@ -41,6 +41,8 @@ return packer.startup({
 
 		use 'windwp/nvim-autopairs'
 
+		use "lewis6991/gitsigns.nvim"
+
 		use "williamboman/nvim-lsp-installer"
 		use "neovim/nvim-lspconfig"
 
