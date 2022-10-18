@@ -1,9 +1,6 @@
 local default_opts = { noremap = true, silent = true }
-local expr_opts = { noremap = true, expr = true, silent = true }
 local map = vim.keymap.set
-local api = vim.api
 local g = vim.g
-local opt = vim.opt
 
 g.mapleader = ' '
 g.maplocalleader = ' '
@@ -18,8 +15,6 @@ map("n", "<S-l>", ":bnext<CR>", default_opts)
 map("n", "<leader>n", ":NvimTreeFocus<CR>", default_opts)
 -- use bufdelete to close current buffer. :q will close all buffer
 map("n", "<leader>q", ":Bdelete<CR>", default_opts)
-
-
 
 -- Search
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", default_opts)
