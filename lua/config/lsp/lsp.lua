@@ -30,7 +30,7 @@ function M.setup()
 
 	-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
 	local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-	updated_capabilities = require('cmp_nvim_lsp').update_capabilities(updated_capabilities)
+	updated_capabilities = require('cmp_nvim_lsp').default_capabilities(updated_capabilities)
 
 	local default_config = {
 		on_init = default_init,
