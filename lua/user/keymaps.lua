@@ -5,9 +5,6 @@ local g = vim.g
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-map("n", "<C-j>", "<Down>", default_opts)
-map("n", "<C-k>", "<Up>", default_opts)
-
 map("n", "s", "<cmd>HopChar1<cr>", default_opts)
 map("n", "<S-s>", "<cmd>HopChar2<cr>", default_opts)
 
@@ -39,16 +36,21 @@ map("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", default_opts)
 -- Show
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>", default_opts)
 map("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<CR>", default_opts)
+map("n", "<leader>oo", "<cmd>LSoutlineToggle<CR>", default_opts)
 
 -- Refactor
 map("n", "<leader>re", "<cmd>Lspsaga rename<CR>", default_opts)
 map("n", "<leader>s", "<cmd>lua vim.lsp.buf.format{ async=true }<CR>", default_opts)
+map("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", default_opts)
 
 -- Move
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", default_opts)
-map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", default_opts)
+map("n", "gD", "<cmd>Lspsaga peek_definition<CR>", default_opts)
 map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", default_opts)
 map("n", "gf", "<cmd>lua vim.lsp.buf.references()<CR>", default_opts)
+map("n", "[c", "<cmd>Gitsigns prev_hunk<CR>", default_opts)
+map("n", "]c", "<cmd>Gitsigns next_hunk<CR>", default_opts)
+
 
 -- Diagnsotic jump can use `<c-o>` to jump back
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", default_opts)

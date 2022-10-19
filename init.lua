@@ -2,11 +2,6 @@ require "user.options"
 require "user.keymaps"
 require "user.plugins"
 
--- TODO
--- codeaction config such shortcut
--- TODO hint
--- border between from panel
-
 require("user.color").setup()
 
 -- Warning  nvim-treesitter must config before lsp-config
@@ -21,3 +16,4 @@ require("user.comment").setup()
 require("user.autopairs").setup()
 require("user.gitsigns")
 require("user.toggleterm").setup()
+require("user.telescope").setup()

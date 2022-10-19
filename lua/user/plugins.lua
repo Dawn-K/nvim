@@ -40,7 +40,8 @@ return packer.startup({
 				-- you can configure Hop the way you like here; see :h hop-config
 				require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
 			end
-		} -- Warning! nvim-lspconfig set event to "BufEnter",
+		}
+		-- Warning! nvim-lspconfig set event to "BufEnter",
 		-- and treesitter set event to VimEnter or not set is work!
 		use 'nvim-treesitter/nvim-treesitter'
 		use 'numToStr/Comment.nvim'
@@ -117,9 +118,6 @@ return packer.startup({
 			'nvim-telescope/telescope.nvim', tag = '0.1.0',
 			-- or                            , branch = '0.1.x',
 			requires = { { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' } },
-			config = function()
-				require("telescope").load_extension('projects')
-			end
 		}
 
 		use 'voldikss/vim-floaterm'
