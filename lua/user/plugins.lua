@@ -43,6 +43,8 @@ return packer.startup({
 
 		use "lewis6991/gitsigns.nvim"
 
+		use "akinsho/toggleterm.nvim"
+
 		use "williamboman/nvim-lsp-installer"
 		use "neovim/nvim-lspconfig"
 

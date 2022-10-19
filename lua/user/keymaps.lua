@@ -5,6 +5,8 @@ local g = vim.g
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+map("n", "<C-j>", "<Down>", default_opts)
+map("n", "<C-k>", "<Up>", default_opts)
 
 -- switch buffer
 map("n", "<S-h>", ":bprevious<CR>", default_opts)
@@ -24,6 +26,9 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<cr>", default_opts)
 map("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", default_opts)
 map("n", "n", "nzz", default_opts)
 map("n", "N", "Nzz", default_opts)
+
+-- Git
+map("n","<leader>gg","<cmd>lua _LAZYGIT_TOGGLE()<cr>",default_opts)
 
 -- Show
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>", default_opts)
