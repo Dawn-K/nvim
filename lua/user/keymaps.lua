@@ -8,6 +8,12 @@ g.maplocalleader = ' '
 map("n", "<C-j>", "<Down>", default_opts)
 map("n", "<C-k>", "<Up>", default_opts)
 
+map("n", "s", "<cmd>HopChar1<cr>", default_opts)
+map("n", "<S-s>", "<cmd>HopChar2<cr>", default_opts)
+
+map("n", "<leader><leader>j", "<cmd>HopLineStartAC<cr>", default_opts)
+map("n", "<leader><leader>k", "<cmd>HopLineStartBC<cr>", default_opts)
+
 -- switch buffer
 map("n", "<S-h>", ":bprevious<CR>", default_opts)
 map("n", "<S-l>", ":bnext<CR>", default_opts)
@@ -28,7 +34,7 @@ map("n", "n", "nzz", default_opts)
 map("n", "N", "Nzz", default_opts)
 
 -- Git
-map("n","<leader>gg","<cmd>lua _LAZYGIT_TOGGLE()<cr>",default_opts)
+map("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", default_opts)
 
 -- Show
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>", default_opts)

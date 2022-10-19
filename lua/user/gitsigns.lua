@@ -1,5 +1,6 @@
 local status_ok, gitsigns = pcall(require, "gitsigns")
 if not status_ok then
+	vim.notify("gitsigns not found")
 	return
 end
 
@@ -31,7 +32,7 @@ gitsigns.setup {
 		relative_time = false,
 	},
 	sign_priority = 10,
-	update_debounce = 100,
+	update_debounce = 100, --
 	status_formatter = nil, -- Use default
 	max_file_length = 40000,
 	preview_config = {

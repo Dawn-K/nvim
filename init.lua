@@ -3,7 +3,7 @@ require "user.keymaps"
 require "user.plugins"
 
 -- TODO
--- codeaction config such as only one bulb and shortcut
+-- codeaction config such shortcut
 -- TODO hint
 -- border between from panel
 
