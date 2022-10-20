@@ -1,9 +1,3 @@
-local status_ok, mini = pcall(require, "mini")
-if not status_ok then
-	vim.notify("mini not found")
-	return
-end
-
 local M = {}
 
 function M.setup()

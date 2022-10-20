@@ -53,6 +53,12 @@ return packer.startup({
 		use "akinsho/toggleterm.nvim"
 
 		use 'echasnovski/mini.nvim'
+
+		use({
+			"kylechui/nvim-surround",
+			tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		})
+
 		use "williamboman/nvim-lsp-installer"
 		use "neovim/nvim-lspconfig"
 
