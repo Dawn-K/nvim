@@ -45,7 +45,7 @@ return packer.startup({
 		-- and treesitter set event to VimEnter or not set is work!
 		use 'nvim-treesitter/nvim-treesitter'
 		use 'numToStr/Comment.nvim'
-		use 'JoosepAlviste/nvim-ts-context-commentstring'
+		-- use 'JoosepAlviste/nvim-ts-context-commentstring'
 
 		use 'windwp/nvim-autopairs'
 
