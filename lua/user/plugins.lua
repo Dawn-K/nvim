@@ -45,7 +45,6 @@ return packer.startup({
 		-- and treesitter set event to VimEnter or not set is work!
 		use 'nvim-treesitter/nvim-treesitter'
 		use 'numToStr/Comment.nvim'
-		-- use 'JoosepAlviste/nvim-ts-context-commentstring'
 
 		use 'windwp/nvim-autopairs'
 
@@ -53,6 +52,7 @@ return packer.startup({
 
 		use "akinsho/toggleterm.nvim"
 
+		use 'echasnovski/mini.nvim'
 		use "williamboman/nvim-lsp-installer"
 		use "neovim/nvim-lspconfig"
 
@@ -119,8 +119,6 @@ return packer.startup({
 			-- or                            , branch = '0.1.x',
 			requires = { { 'nvim-lua/plenary.nvim', 'BurntSushi/ripgrep' } },
 		}
-
-		use 'voldikss/vim-floaterm'
 
 		-- Complete
 		use "hrsh7th/nvim-cmp"
