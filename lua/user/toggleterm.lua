@@ -45,9 +45,18 @@ end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+local lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
+local cur_cwd = vim.fn.getcwd()
 
 function _LAZYGIT_TOGGLE()
+	-- cwd is the root of project. if cwd is changed, change the git.
+	local cwd = vim.fn.getcwd()
+	if cwd ~= cur_cwd then
+		cur_cwd = cwd
+		lazygit:close()
+		lazygit = Terminal:new({ cmd = "lazygit", direction = "float" })
+	end
+
 	lazygit:toggle()
 end
 
