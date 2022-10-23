@@ -59,7 +59,10 @@ return packer.startup({
 			tag = "*", -- Use for stability; omit to use `main` branch for the latest features
 		})
 
-		use "williamboman/nvim-lsp-installer"
+		use "williamboman/mason.nvim"
+		use "WhoIsSethDaniel/mason-tool-installer"
+		use "williamboman/mason-lspconfig.nvim"
+
 		use "neovim/nvim-lspconfig"
 
 		use 'wbthomason/packer.nvim'
