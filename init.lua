@@ -1,6 +1,6 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
+require("user.options")
+require("user.keymaps")
+require("user.plugins")
 
 require("user.color").setup()
 
@@ -10,7 +10,6 @@ require("config.nvim-treesitter").setup()
 -- include lsp-installer lsp-config cmp
 require("config.lsp.nvim-cmp").setup()
 require("user.lsp")
-
 
 require("user.comment").setup()
 require("user.autopairs").setup()
