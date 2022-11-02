@@ -43,7 +43,12 @@ return packer.startup({
 		})
 		-- Warning! nvim-lspconfig set event to "BufEnter",
 		-- and treesitter set event to VimEnter or not set is work!
-		use("nvim-treesitter/nvim-treesitter")
+		use({
+			"nvim-treesitter/nvim-treesitter",
+			run = function()
+				require("nvim-treesitter.install").update({ with_sync = true })
+			end,
+		})
 		use("numToStr/Comment.nvim")
 
 		use("windwp/nvim-autopairs")
